@@ -1,0 +1,35 @@
+<Frame defaultPage="pages/home/home-page">
+  <BottomNavigation>
+    <TabStrip>
+      <TabStripItem>
+        <Label text="Home" />
+        <Image src="res://home" />
+      </TabStripItem>
+      <TabStripItem>
+        <Label text="Services" />
+        <Image src="res://services" />
+      </TabStripItem>
+      <TabStripItem>
+        <Label text="Cart" />
+        <Image src="res://cart" />
+      </TabStripItem>
+      <TabStripItem>
+        <Label text="Profile" />
+        <Image src="res://profile" />
+      </TabStripItem>
+    </TabStrip>
+
+    <TabContentItem>
+      <Frame defaultPage="pages/home/home-page" />
+    </TabContentItem>
+    <TabContentItem>
+      <Frame defaultPage="pages/services/services-page" />
+    </TabContentItem>
+    <TabContentItem>
+      <Frame defaultPage="pages/cart/cart-page" />
+    </TabContentItem>
+    <TabContentItem>
+      <Frame defaultPage="pages/profile/profile-page" />
+    </TabContentItem>
+  </BottomNavigation>
+</Frame>

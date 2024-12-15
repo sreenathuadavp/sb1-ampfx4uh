@@ -1,0 +1,38 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Admin Dashboard" />
+  
+  <TabView selectedIndex="{{ selectedTabIndex }}">
+    <TabViewItem title="New Requests">
+      <ListView items="{{ pendingTickets }}">
+        <ListView.itemTemplate>
+          <GridLayout columns="*,auto" class="p-4 border-b">
+            <StackLayout col="0">
+              <Label text="{{ customerName }}" class="font-bold" />
+              <Label text="{{ 'Service: ' + serviceId }}" />
+              <Label text="{{ 'Status: ' + status }}" class="text-orange-500" />
+              <Label text="{{ 'Created: ' + createdAt }}" class="text-sm text-gray-600" />
+            </StackLayout>
+            <Button text="Accept" tap="{{ $parent.onAcceptTicket }}" 
+                    class="-primary" col="1" visibility="{{ status === 'pending' ? 'visible' : 'collapsed' }}" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+    </TabViewItem>
+    
+    <TabViewItem title="In Progress">
+      <ListView items="{{ activeTickets }}">
+        <ListView.itemTemplate>
+          <GridLayout columns="*,auto" class="p-4 border-b">
+            <StackLayout col="0">
+              <Label text="{{ customerName }}" class="font-bold" />
+              <Label text="{{ 'Service: ' + serviceId }}" />
+              <Label text="{{ 'Status: ' + status }}" class="text-blue-500" />
+            </StackLayout>
+            <Button text="Complete" tap="{{ $parent.onCompleteTicket }}" 
+                    class="-success" col="1" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+    </TabViewItem>
+  </TabView>
+</Page>

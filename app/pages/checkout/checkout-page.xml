@@ -1,0 +1,30 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Checkout" />
+  
+  <ScrollView>
+    <StackLayout class="p-4">
+      <Label text="Booking Details" class="text-xl font-bold mb-4" />
+      
+      <TextField hint="Full Name" text="{{ customerName }}" class="input mb-2" />
+      <TextField hint="Phone Number" text="{{ customerPhone }}" keyboardType="phone" class="input mb-2" />
+      <TextView hint="Service Address" text="{{ address }}" class="input mb-2" height="100" />
+      <DatePicker date="{{ scheduledDate }}" class="mb-4" />
+      
+      <Label text="Order Summary" class="text-xl font-bold mb-2" />
+      <ListView items="{{ cartItems }}" height="200" class="mb-4">
+        <ListView.itemTemplate>
+          <GridLayout columns="*,auto" class="p-2">
+            <Label text="{{ service.name }}" col="0" />
+            <Label text="{{ '₹' + (service.price * quantity) }}" col="1" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+      
+      <StackLayout class="border-t border-gray-200 pt-4">
+        <Label text="{{ 'Total Amount: ₹' + total }}" class="text-xl font-bold" />
+      </StackLayout>
+      
+      <Button text="Confirm & Pay" tap="{{ onConfirmBooking }}" class="-primary mt-4" />
+    </StackLayout>
+  </ScrollView>
+</Page>

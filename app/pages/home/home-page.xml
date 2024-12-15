@@ -1,0 +1,39 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Chittoor Services" />
+  
+  <ScrollView>
+    <StackLayout class="p-4">
+      <Label text="Welcome to Chittoor Services" class="text-2xl font-bold mb-4" />
+      
+      <GridLayout rows="auto" columns="*,*" class="mb-4">
+        <Label text="Popular Services" class="text-xl" col="0" />
+        <Label text="View All" class="text-blue-500 text-right" col="1" tap="{{ onViewAllTap }}" />
+      </GridLayout>
+
+      <ListView items="{{ popularServices }}" class="mb-4">
+        <ListView.itemTemplate>
+          <GridLayout columns="auto,*" class="p-2">
+            <Image src="{{ imageUrl }}" width="60" height="60" class="rounded-lg" col="0" />
+            <StackLayout col="1" class="ml-2">
+              <Label text="{{ name }}" class="font-semibold" />
+              <Label text="{{ '₹' + price }}" class="text-green-600" />
+            </StackLayout>
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+
+      <Label text="Categories" class="text-xl mb-2" />
+      <WrapLayout>
+        <StackLayout class="category-card" tap="{{ onCategoryTap }}" category="Home">
+          <Label text="Home" class="text-center" />
+        </StackLayout>
+        <StackLayout class="category-card" tap="{{ onCategoryTap }}" category="Electronics">
+          <Label text="Electronics" class="text-center" />
+        </StackLayout>
+        <StackLayout class="category-card" tap="{{ onCategoryTap }}" category="Vehicle">
+          <Label text="Vehicle" class="text-center" />
+        </StackLayout>
+      </WrapLayout>
+    </StackLayout>
+  </ScrollView>
+</Page>

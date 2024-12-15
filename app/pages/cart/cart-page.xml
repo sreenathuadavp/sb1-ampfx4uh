@@ -1,0 +1,24 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Cart" />
+  
+  <GridLayout rows="*, auto">
+    <ListView items="{{ cartItems }}" row="0">
+      <ListView.itemTemplate>
+        <GridLayout columns="auto,*,auto" class="p-4 border-b border-gray-200">
+          <Image src="{{ service.imageUrl }}" width="60" height="60" class="rounded-lg" col="0" />
+          <StackLayout col="1" class="ml-2">
+            <Label text="{{ service.name }}" class="font-semibold" />
+            <Label text="{{ '₹' + service.price }}" class="text-green-600" />
+            <Label text="{{ 'Quantity: ' + quantity }}" />
+          </StackLayout>
+          <Button text="Remove" class="-danger" tap="{{ $parent.onRemoveFromCart }}" col="2" />
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+    
+    <StackLayout row="1" class="p-4 bg-white border-t border-gray-200">
+      <Label text="{{ 'Total: ₹' + total }}" class="text-xl font-bold mb-2" />
+      <Button text="Proceed to Checkout" class="-primary" tap="{{ onCheckout }}" />
+    </StackLayout>
+  </GridLayout>
+</Page>
